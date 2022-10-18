@@ -5,6 +5,7 @@ Require Import SMTC.Tactic.
 Set SMT Solver "z3".
 Local Open Scope R_scope.
 
+
 Axiom by_z3 : forall (P : Prop), P.
 
 Lemma sum_div :
@@ -12,7 +13,7 @@ Lemma sum_div :
     c > 0 -> d > 0 -> a > 0 -> b > 0 ->
     (a + b) / (c + d) <= (a/c) + (b/d).
 Proof.
-  intros. smt solve; apply by_z3.
+  intros. smt solve calling "z3"; apply by_z3.
 Qed.
 
 Lemma sum_div_denom :
